@@ -48,16 +48,21 @@ const LightMode = () => {
   }
 
   React.useEffect(() => {
-    const html = document.querySelector('html');
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-      html?.classList.remove(
-        'light',
-        'dark',
-        ...themeModes
-      );
-      html?.classList.add(savedTheme);
+    const html = document.documentElement;
+    const storedTheme = localStorage.getItem('theme');
+    const fallbackTheme = 'dark';
+
+    const theme =
+      storedTheme && themeModes.includes(storedTheme)
+        ? storedTheme
+        : fallbackTheme;
+
+    if (!storedTheme || !themeModes.includes(storedTheme)) {
+      localStorage.setItem('theme', fallbackTheme);
     }
+
+    html.classList.remove(...themeModes);
+    html.classList.add(theme);
   }, []);
 
   return (
