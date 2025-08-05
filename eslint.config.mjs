@@ -15,14 +15,14 @@ const eslintConfig = [
     rules: {
       'react/no-unescaped-entities': 'off',
       '@next/next/no-page-custom-font': 'off',
-      'no-unused-vars': [
-        'error',
-        {
-          vars: 'all',
-          args: 'after-used',
-          ignoreRestSiblings: true,
-        },
-      ],
+      // 'no-unused-vars': [
+      //   'error',
+      //   {
+      //     vars: 'all',
+      //     args: 'after-used',
+      //     ignoreRestSiblings: true,
+      //   },
+      // ],
     },
   }),
 ];

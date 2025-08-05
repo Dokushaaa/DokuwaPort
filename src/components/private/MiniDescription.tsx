@@ -1,17 +1,9 @@
 import Image from 'next/image';
 // debug this needs an overhaul.
 const MiniDescription = ({
-  inlinetext,
   headingText,
-  subText,
-  imgData,
-  paraText,
 }: {
-  inlinetext?: string;
   headingText: string;
-  subText: string;
-  imgData: string;
-  paraText: string;
 }) => {
   const fetchIsError = '404 is not here';
   return (

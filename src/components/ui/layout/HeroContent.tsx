@@ -1,23 +1,17 @@
+import ResumeShow from '@/components/functions/ResumeShow';
 import {
   personalInfo,
-  socialLinksRender,
   typeWriterVariables,
 } from '@/data/content';
-import Image from 'next/image';
 import { TypewriterEffect } from '../vendor/typewriter-effect';
-import ResumeShow from '@/components/functions/ResumeShow';
-
-type Props = {};
-type wordList = {
-  text: string;
-};
+import Image from 'next/image';
 
 const wordsDisplay: { text: string }[] = [
   { text: 'Arris' },
   { text: 'Saavedra' },
 ];
 
-const HeroContent = (props: Props) => {
+const HeroContent = () => {
   return (
     <div
       id='about'
@@ -67,10 +61,12 @@ const HeroContent = (props: Props) => {
       {/* right */}
       <div className='imgSpinner flex w-full flex-col items-center justify-center gap-2 lg:w-1/2'>
         <div className='animator bg-secondary rounded-md p-2'>
-          <img
-            className='animate-spinner size-[300px] hover:animate-none'
+          <Image
+            className='animate-spinner hover:animate-none'
             src='/assets/react.svg'
             alt=''
+            width={300}
+            height={300}
           />
         </div>
       </div>

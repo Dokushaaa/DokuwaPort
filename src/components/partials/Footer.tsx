@@ -4,9 +4,7 @@ import { hyperIcons, hyperLinks } from '../../data/content';
 import LightMode from '../functions/LightMode';
 import Link from 'next/link';
 
-type Props = {};
-
-const footerRender = hyperLinks.map((item, index) => (
+const footerRender = hyperLinks.map(item => (
   <li key={item.id} id={`item-${item.id}`}>
     <Link href={item.link}>
       <motion.p
@@ -27,7 +25,7 @@ const footerRender = hyperLinks.map((item, index) => (
     </Link>
   </li>
 ));
-const hyperIconRender = hyperIcons.map((item, index) => (
+const hyperIconRender = hyperIcons.map(item => (
   <li key={item.id} id={`item-${item.id}`}>
     <motion.a
       target='_blank'
@@ -37,7 +35,7 @@ const hyperIconRender = hyperIcons.map((item, index) => (
     </motion.a>
   </li>
 ));
-const Footer = (props: Props) => {
+const Footer = () => {
   return (
     <>
       <footer className='bg-header/85 dark:bg-header/50'>

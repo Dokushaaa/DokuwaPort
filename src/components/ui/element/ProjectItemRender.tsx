@@ -9,7 +9,7 @@ import {
   cardListArray,
   cardListType,
 } from '@/data/_content_projtects';
-import TooltipReusable from '@/components/functions/TooltipReusable';
+import Image from 'next/image';
 
 // ...same cardListType and cardListArray from your original code...
 
@@ -22,7 +22,9 @@ export const ProjectItemRender = () => {
       {cardListArray.map(item => (
         <div key={item.id} className='cardItem'>
           <div className='rgba bg-secondary mb-2 flex min-h-[325px] flex-col justify-evenly rounded-md px-3 py-2 md:min-h-[400px]'>
-            <img
+            <Image
+              width={300}
+              height={300}
               className='rounded-md'
               src={item.cardImage}
               alt={item.cardTitle}
@@ -38,15 +40,13 @@ export const ProjectItemRender = () => {
                 {/* Icon Section */}
                 <div className='cardInfo-TechStack flex min-w-0 flex-1'>
                   <ul className='flex flex-wrap items-center gap-1'>
-                    {item.cardStack.map(
-                      ({ icon, name }, idx) => (
-                        <li
-                          key={idx}
-                          className='circle icon shrink-0'>
-                          {icon}
-                        </li>
-                      )
-                    )}
+                    {item.cardStack.map(({ icon }, idx) => (
+                      <li
+                        key={idx}
+                        className='circle icon shrink-0'>
+                        {icon}
+                      </li>
+                    ))}
                   </ul>
                 </div>
 

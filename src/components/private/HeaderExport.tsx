@@ -4,7 +4,6 @@ import React from 'react';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import LightMode from '../functions/LightMode';
 
-type Props = {};
 let counter: number = 1;
 export const headerList = [
   { id: counter++, name: 'Home', link: '/' },
@@ -13,7 +12,7 @@ export const headerList = [
   { id: counter++, name: 'Contacts', link: '/contacts' },
 ];
 
-const Header = (props: Props) => {
+const Header = () => {
   const [isOpen, setIsOpen] = React.useState<true | false>(
     false
   );
@@ -23,15 +22,6 @@ const Header = (props: Props) => {
     }, 300);
   };
 
-  const headerListRender = headerList.map((item, index) => (
-    <li key={item.id} id={`item-${item.id}`}>
-      <motion.a
-        href={item.link}
-        className='header-nav-desktop w-1/2'>
-        {item.name}
-      </motion.a>
-    </li>
-  ));
   return (
     <>
       <header>

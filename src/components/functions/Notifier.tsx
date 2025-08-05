@@ -5,10 +5,9 @@ import { FaCheck } from 'react-icons/fa';
 
 import { StoreContext } from '@/global/store/StoreContext';
 import {
-  setSuccess,
   setNotifType,
+  setSuccess,
 } from '../../global/store/StoreAction';
-import { setMessage } from '@/global/helper/actions/ReduxActions';
 
 type notifierProps = {
   toastDuration?: number;
@@ -22,29 +21,29 @@ const Notifier = ({
   // equivalent to 3 seconds
   const { store, dispatch } =
     React.useContext(StoreContext);
-  // manual closer
-  const handleCloseMain = () => dispatch(setSuccess(false));
+
   // auto closer init
-  function toastDetails({
-    toastDuration,
-  }: {
-    toastDuration?: number;
-  }) {
-    if (toastDuration ?? null) {
-      setTimeout(() => {
-        dispatch(setSuccess(false));
-        dispatch(setNotifType(''));
-      }, toastDuration);
-    }
-  }
+  const toastDetails = React.useCallback(
+    ({ toastDuration }: { toastDuration?: number }) => {
+      if (toastDuration ?? null) {
+        setTimeout(() => {
+          dispatch(setSuccess(false));
+          dispatch(setNotifType(''));
+        }, toastDuration);
+      }
+    },
+    [dispatch] // include dependencies the function uses
+  );
+  // auto closer activator
+
+  React.useEffect(() => {
+    toastDetails({ toastDuration });
+  }, [toastDetails, toastDuration]);
   // from store(data) > to this component. used to check if dev wants to set notifier to have a long text. if else it defeaults to null.:
   const notifierType = store.notifType
     ? store.notifType
     : null;
-  // auto closer activator
-  React.useEffect(() => {
-    toastDetails({ toastDuration });
-  }, []);
+
   return (
     <>
       <div

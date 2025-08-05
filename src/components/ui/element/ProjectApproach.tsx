@@ -3,9 +3,6 @@ import React from 'react';
 import { FaPlus } from 'react-icons/fa';
 import { TypewriterEffect } from '../vendor/typewriter-effect';
 
-// --- Types
-type Props = {};
-
 type approachProps = {
   approachNumber: number;
   approachTitle: string;
@@ -130,7 +127,7 @@ const ApproachCard: React.FC<{ item: approachProps }> = ({
 };
 
 // --- Component: ProjectApproach
-const ProjectApproach: React.FC<Props> = () => {
+const ProjectApproach: React.FC = () => {
   return (
     <div className='projectApproach div-auto py-5'>
       <TypewriterEffect

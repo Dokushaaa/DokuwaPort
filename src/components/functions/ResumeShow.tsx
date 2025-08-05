@@ -6,10 +6,12 @@ import { FaFileDownload, FaTimes } from 'react-icons/fa';
 import { StoreContext } from '@/global/store/StoreContext';
 import {
   setInfo,
+  setMessage,
+  setNotifType,
   setSelectedResume,
+  setSuccess,
 } from '@/global/store/StoreAction';
-
-type Props = {};
+import Image from 'next/image';
 
 const resumes = [
   // item 1:
@@ -32,12 +34,19 @@ const resumes = [
   },
 ];
 
-const ResumeShow: React.FC<Props> = () => {
+const ResumeShow: React.FC = () => {
   const { store, dispatch } =
     React.useContext(StoreContext);
 
   const handleShowModal = (resumeIndex: number) => {
-    dispatch(setSelectedResume(resumes[resumeIndex]));
+    const selected = resumes[resumeIndex];
+
+    dispatch(
+      setSelectedResume({
+        resumeDownload: selected.resumeDownload,
+        cardImages: selected.cardImages,
+      })
+    );
     dispatch(setInfo(true));
   };
   const buttonClassName =
@@ -83,6 +92,7 @@ const ResumeModal: React.FC<ResumeModalProps> = ({
   card,
   onClose,
 }) => {
+  const { dispatch } = React.useContext(StoreContext);
   const handleDownload = () => {
     const link = document.createElement('a');
     link.href = card.resumeDownload;
@@ -91,6 +101,9 @@ const ResumeModal: React.FC<ResumeModalProps> = ({
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+    dispatch(setSuccess(true));
+    dispatch(setMessage('Thank you for downloading'));
+    dispatch(setNotifType('long'));
   };
 
   return (
@@ -122,7 +135,9 @@ const ResumeModal: React.FC<ResumeModalProps> = ({
 
         <div className='flex flex-col items-center gap-4 md:flex-row'>
           {card.cardImages.map((src, index) => (
-            <img
+            <Image
+              width={1000}
+              height={1000}
               key={index}
               src={src}
               alt={`Resume ${index + 1}`}

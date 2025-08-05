@@ -1,6 +1,10 @@
 'use client';
 import { motion } from 'framer-motion';
-import { hyperLinks, personalInfo } from '../../data/content';
+import {
+  hyperLinks,
+  personalInfo,
+} from '../../data/content';
+import Image from 'next/image';
 
 // type headerItem = { name: string; link: string };
 // type Props = { headerList: headerItem[] };
@@ -15,7 +19,7 @@ const HeaderOpen = ({ isOpen, setIsOpen }: Props) => {
     setIsOpen(!isOpen);
   };
 
-  const headerListRender = hyperLinks.map((item) => (
+  const headerListRender = hyperLinks.map(item => (
     <li
       key={item.id}
       id={`item-${item.id}`}
@@ -29,17 +33,28 @@ const HeaderOpen = ({ isOpen, setIsOpen }: Props) => {
     </li>
   ));
   return (
-    <div className={`flex flex-col items-center justify-center gap-5 px-5`}>
+    <div
+      className={`flex flex-col items-center justify-center gap-5 px-5`}>
       <div className='top pt-4'>
-        <img className='h-[200px] w-full object-cover' src='sandra.png' alt='' />
+        <Image
+          height={150}
+          width={150}
+          className='w-full object-cover'
+          src='/sandra.png'
+          alt=''
+        />
       </div>
       <div className='bottom flex flex-col items-center justify-between gap-5 pt-16'>
-        <ul className='flex w-full flex-col items-center gap-5'>{headerListRender}</ul>
+        <ul className='flex w-full flex-col items-center gap-5'>
+          {headerListRender}
+        </ul>
         <p className='pr-7'>
-          Hello there, its me {personalInfo[0]}. and welcome to this section of my
-          portfolio.
+          Hello there, its me {personalInfo[0]}. and welcome
+          to this section of my portfolio.
         </p>
-        <span className='text-right text-xs text-stone-500'>{personalInfo[1]}</span>
+        <span className='text-right text-xs text-stone-500'>
+          {personalInfo[1]}
+        </span>
       </div>
     </div>
   );

@@ -40,8 +40,7 @@ export const CodeBlock = ({
   const [activeTab, setActiveTab] = React.useState(0);
 
   const tabsExist = tabs.length > 0;
-  const { store, dispatch } =
-    React.useContext(StoreContext);
+  const { dispatch } = React.useContext(StoreContext);
   const copyToClipboard = async () => {
     const textToCopy = tabsExist
       ? tabs[activeTab].code

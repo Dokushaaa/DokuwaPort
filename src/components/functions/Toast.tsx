@@ -1,14 +1,11 @@
 'use client';
 import React from 'react';
-import {
-  FaCheckCircle,
-  FaTimesCircle,
-} from 'react-icons/fa';
+import { FaTimesCircle } from 'react-icons/fa';
 import { MdOutlineQuestionMark } from 'react-icons/md';
 import ModalWrapper from './ModalWrapper';
 
-import { setSuccess } from '../../global/store/StoreAction';
 import { StoreContext } from '@/global/store/StoreContext';
+import { setSuccess } from '../../global/store/StoreAction';
 
 const Toast = ({
   toastDuration = 5000,
@@ -20,27 +17,25 @@ const Toast = ({
   // manual closer
   const handleCloseMain = () => dispatch(setSuccess(false));
   // auto closer init
-  function toastDetails({
-    toastDuration,
-  }: {
-    toastDuration?: number;
-  }) {
-    if (toastDuration ?? null) {
-      setTimeout(() => {
-        dispatch(setSuccess(false));
-        console.log(!store.success);
-      }, toastDuration);
-    }
-  }
-  // auto closer activator
+  const toastDetails = React.useCallback(
+    ({ toastDuration }: { toastDuration?: number }) => {
+      if (toastDuration ?? null) {
+        setTimeout(() => {
+          dispatch(setSuccess(false));
+        }, toastDuration);
+      }
+    },
+    [dispatch] // include dependencies the function uses
+  );
+
   React.useEffect(() => {
     toastDetails({ toastDuration });
-  }, []);
+  }, [toastDetails, toastDuration]);
   return (
     <>
       <>
         <div className='parent bg-primary w-1/8'>
-          <ModalWrapper position={'center'} opacity={'50'}>
+          <ModalWrapper position={'center'}>
             <div className='bg-primary dark:bg-primary animator flex h-auto w-[400px] flex-col gap-5 rounded-xl p-5'>
               <div className='flex items-center justify-end'>
                 <button

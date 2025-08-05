@@ -13,8 +13,7 @@ import CallToAction from '@/components/ui/layout/CallToAction';
 import { StoreContext } from '../global/store/StoreContext';
 
 export default function Home() {
-  const { store, dispatch } =
-    React.useContext(StoreContext);
+  const { store } = React.useContext(StoreContext);
   return (
     <main className='relative'>
       <Header />

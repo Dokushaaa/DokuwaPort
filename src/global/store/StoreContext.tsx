@@ -1,11 +1,8 @@
 'use client';
 
-import React, {
-  createContext,
-  useReducer,
-  ReactNode,
-} from 'react';
-import { StoreReducer } from './StoreReducer';
+import React, { useReducer, ReactNode } from 'react';
+
+import { StoreReducer, Action } from './StoreReducer';
 
 type State = {
   error: boolean;
@@ -23,19 +20,21 @@ type State = {
   isLoading: boolean;
   isFetching: boolean;
   isLogin: boolean;
-  isSearch: Record<string, any>;
-  credentials: Record<string, any>;
-  isAddingNum: Record<number, any>;
+  isSearch: Record<string, string>;
+  credentials: Record<string, string>;
+
   notifType: string;
   selectedResume?: {
-    cardImage: string;
     resumeDownload: string;
+    cardImages: string[];
+    cardTitle?: string;
+    cardDescription?: string;
   };
 };
 
 interface StoreContextProps {
-  store: any; // Define the correct type for store
-  dispatch: React.Dispatch<any>;
+  store: State;
+  dispatch: React.Dispatch<Action>;
 }
 
 const initVal: State = {
@@ -56,10 +55,9 @@ const initVal: State = {
   isLogin: false,
   isSearch: {},
   credentials: {},
-  isAddingNum: '0',
   notifType: '',
   selectedResume: {
-    cardImage: '',
+    cardImages: [],
     resumeDownload: '',
   },
 };

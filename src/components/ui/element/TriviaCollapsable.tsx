@@ -3,8 +3,6 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-type Props = {};
-
 type DropdownItem = {
   title: string;
   content: string;
@@ -34,7 +32,7 @@ const dropdownData: DropdownItem[] = [
   },
 ];
 
-const TriviaCollapsable = (props: Props) => {
+const TriviaCollapsable = () => {
   const [activeIndex, setActiveIndex] = React.useState<
     number | null
   >(null);

@@ -14,11 +14,8 @@ import {
 import { BackgroundBeams } from '../vendor/background-beams';
 import AboutInfo from '../element/AboutInfo';
 
-type Props = {};
-
-const AboutContent = (props: Props) => {
-  const { store, dispatch } =
-    React.useContext(StoreContext);
+const AboutContent = () => {
+  const { dispatch } = React.useContext(StoreContext);
   const handleCopyAddress = () => {
     const text: string = 'SaavedraArrisss@gmail.com';
     navigator.clipboard
@@ -58,10 +55,12 @@ const AboutContent = (props: Props) => {
             {/* flex item 1 */}
             <div className='rgba relative flex h-full w-full items-center justify-center rounded-md lg:w-1/2'>
               <BackgroundBeams className='z-10 w-full' />
-              <img
+              <Image
                 src='/assets/grid2.png'
                 className='img-cover size-full rounded-md bg-cover'
                 alt=''
+                width={300}
+                height={300}
               />
               <span className='bg-primary/40 absolute top-1/2 left-1/2 z-[10] w-3/4 -translate-x-1/2 -translate-y-1/2 rounded-lg px-2 text-center lg:px-0 xl:px-2 xl:text-base'>
                 I build fast, accessible, and scalable web

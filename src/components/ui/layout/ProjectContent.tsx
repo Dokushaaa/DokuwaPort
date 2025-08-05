@@ -4,13 +4,11 @@ import { ProjectItemRender } from '../element/ProjectItemRender';
 import ProjectApproach from '../element/ProjectApproach';
 import CodeSelector from '../element/CodeSelector';
 
-type Props = {};
-
 const wordsDisplay: { text: string }[] = [
   { text: 'Project' },
   { text: 'Showcase' },
 ];
-const ProjectContent = (props: Props) => {
+const ProjectContent = () => {
   return (
     <div className='projects--intro'>
       <div className='flex w-full flex-col items-center gap-2 py-5'>

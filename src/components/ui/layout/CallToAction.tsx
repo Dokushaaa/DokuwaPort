@@ -12,15 +12,12 @@ import { setNotifType } from '../../../global/store/StoreAction';
 import TriviaCollapsable from '../element/TriviaCollapsable';
 import { TypewriterEffect } from '../vendor/typewriter-effect';
 
-type Props = {};
-
-const CallToAction = (props: Props) => {
+const CallToAction = () => {
   const wordsDisplay: { text: string }[] = [
     { text: 'Contact' },
     { text: 'Me!' },
   ];
-  const { store, dispatch } =
-    React.useContext(StoreContext);
+  const { dispatch } = React.useContext(StoreContext);
   const handleContactDummy = () => {
     console.log(
       'This button is being used for now as this is only created using the intended purpose of viewing.'

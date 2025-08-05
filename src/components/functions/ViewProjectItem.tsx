@@ -4,6 +4,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { FaTimes } from 'react-icons/fa';
 import { cardListType } from '@/data/_content_projtects';
+import Image from 'next/image';
 
 export const ViewProjectItem = ({
   card,
@@ -34,7 +35,9 @@ export const ViewProjectItem = ({
         </button>
 
         <div className='mb-4 flex justify-center'>
-          <img
+          <Image
+            width={300}
+            height={300}
             src={card.cardImage}
             alt={card.cardTitle}
             className='max-h-[75vh] w-full rounded-md object-contain'

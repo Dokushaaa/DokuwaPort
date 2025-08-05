@@ -1,8 +1,6 @@
 import React from 'react';
 
-type Props = {};
-
-const Eternal = (props: Props) => {
+const Eternal = () => {
   return (
     <>
       <svg

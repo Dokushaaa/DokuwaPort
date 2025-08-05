@@ -14,20 +14,45 @@ export type State = {
   isLoading: boolean;
   isFetching: boolean;
   isLogin: boolean;
-  isSearch: Record<string, any>;
-  credentials: Record<string, any>;
+  isSearch: Record<string, string>;
+  credentials: Record<string, string>;
   notifType: string;
   selectedResume?: {
     resumeDownload: string;
-    cardImage: string;
+    cardImages: string[];
+    cardTitle?: string;
+    cardDescription?: string;
   };
 };
 
-export type Action = {
-  type: string;
-  payload: any;
-};
-
+export type Action =
+  | { type: 'ERROR'; payload: boolean }
+  | { type: 'INFO'; payload: boolean }
+  | { type: 'MESSAGE'; payload: string }
+  | { type: 'SUCCESS'; payload: boolean }
+  | { type: 'SAVE'; payload: boolean }
+  | { type: 'SHOW'; payload: boolean }
+  | { type: 'ARCHIVE'; payload: boolean }
+  | { type: 'RESTORE'; payload: boolean }
+  | { type: 'DELETE'; payload: boolean }
+  | { type: 'IS_ADD'; payload: boolean }
+  | { type: 'IS_EDIT'; payload: boolean }
+  | { type: 'IS_LOADING'; payload: boolean }
+  | { type: 'IS_FETCHING'; payload: boolean }
+  | { type: 'IS_LOGIN'; payload: boolean }
+  | { type: 'IS_ACTIVE'; payload: boolean }
+  | { type: 'IS_SEARCH'; payload: Record<string, string> }
+  | { type: 'CREDENTIALS'; payload: Record<string, string> }
+  | { type: 'NOTIFTYPE'; payload: string }
+  | {
+      type: 'SET_SELECTED_RESUME';
+      payload: {
+        resumeDownload: string;
+        cardImages: string[];
+        cardTitle?: string;
+        cardDescription?: string;
+      };
+    };
 export const initialState: State = {
   error: false,
   info: false,
@@ -49,7 +74,7 @@ export const initialState: State = {
   notifType: '',
   selectedResume: {
     resumeDownload: '',
-    cardImage: '',
+    cardImages: [],
   },
 };
 
@@ -143,11 +168,7 @@ export const StoreReducer = (
         ...state,
         credentials: action.payload,
       };
-    case 'IS_ADDINGNUM':
-      return {
-        ...state,
-        credentials: action.payload,
-      };
+
     case 'NOTIFTYPE':
       return {
         ...state,

@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 
@@ -15,7 +16,9 @@ const PageNotFound = () => {
             Sorry, the page you are looking for could not be
             found.
           </p>
-          <img
+          <Image
+            height={500}
+            width={500}
             src='/public/404.gif'
             alt='ducking-around'
             className='border-gradient-to-r size-[20rem] rounded-md border-2 from-blue-500 to-purple-500 transition-all'

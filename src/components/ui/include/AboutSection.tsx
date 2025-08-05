@@ -1,8 +1,6 @@
 import AboutContent from '../layout/AboutContent';
 
-type Props = {};
-
-const AboutSection = (props: Props) => {
+const AboutSection = () => {
   return (
     <section
       id='aboutSection'

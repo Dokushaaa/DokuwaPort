@@ -7,9 +7,7 @@ import LightMode from '../functions/LightMode';
 import HeaderOpen from './HeaderOpen';
 import Link from 'next/link';
 
-type Props = { activePage?: string };
-
-const Header = (props: Props) => {
+const Header = () => {
   const [isOpen, setIsOpen] = React.useState<true | false>(
     false
   );
@@ -28,15 +26,12 @@ const Header = (props: Props) => {
   const [isScroll, setIsScroll] = React.useState<
     true | false
   >(false);
+
   React.useEffect(() => {
     const handleScroll = () => {
       setTimeout(() => {
-        if (window.scrollY > 75) {
-          setIsScroll(true);
-        } else {
-          setIsScroll(false);
-        }
-      }, 300); // 300ms delay before the state updates
+        setIsScroll(() => window.scrollY > 75);
+      }, 300);
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -74,7 +69,7 @@ const Header = (props: Props) => {
 
   return (
     <>
-      <header className=''>
+      <header className={`scrolling-${isScroll}`}>
         <nav
           className={`bg-header fixed top-0 left-0 z-[1000] w-full shadow-lg shadow-md transition-all ease-in-out`}>
           <div className='container'>

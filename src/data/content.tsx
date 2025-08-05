@@ -1,4 +1,3 @@
-import TooltipReusable from '@/components/functions/TooltipReusable';
 import React, { JSX } from 'react';
 import {
   FaCss3,
@@ -55,7 +54,7 @@ export const typeWriterVariables = {
 } as const;
 /* Page : Home Page*/
 let counter: number = 1;
-let testimonialCount: number = 1;
+
 // HeroBanner
 let socialLinksCounter: number = 1;
 // gridbox
@@ -419,7 +418,7 @@ type workTypeList = {
   roleName: string;
   timeSpan: string;
   card: workCard[];
-  id: any;
+  id: number;
   workOrg: string;
 };
 type workCard = {
@@ -598,7 +597,6 @@ type gridBoxText = {
   content: string;
   id?: string;
   className?: string;
-  extra?: any;
 };
 export const gridBoxList: gridBoxText[] = [
   {
@@ -667,7 +665,7 @@ export const callTechStack = techStackList.map(item => (
 type techIcon = {
   iconRender: React.ReactNode;
   iconId?: number;
-  iconName?: String;
+  iconName?: string;
 };
 
 const techIconRender: techIcon[] = [

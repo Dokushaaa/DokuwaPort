@@ -9,9 +9,7 @@ import React from 'react';
 import { TypewriterEffect } from '../vendor/typewriter-effect';
 import { AnimatePresence, motion } from 'framer-motion';
 
-type Props = {};
-
-const AboutInfo = (props: Props) => {
+const AboutInfo = () => {
   const [selected, setSelected] = React.useState<
     'certifications' | 'work' | 'education'
   >('certifications');

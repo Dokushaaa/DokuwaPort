@@ -1,8 +1,6 @@
 import ProjectContent from '../layout/ProjectContent';
 
-type Props = {};
-
-const ProjectSection = (props: Props) => {
+const ProjectSection = () => {
   return (
     <section
       id='projects'

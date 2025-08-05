@@ -7,7 +7,7 @@ import {
   useAnimate,
   useInView,
 } from 'motion/react';
-import { useEffect } from 'react';
+import React from 'react';
 
 export const TypewriterEffect = ({
   words,
@@ -31,7 +31,7 @@ export const TypewriterEffect = ({
 
   const [scope, animate] = useAnimate();
   const isInView = useInView(scope);
-  useEffect(() => {
+  React.useEffect(() => {
     if (isInView) {
       animate(
         'span',
@@ -47,7 +47,7 @@ export const TypewriterEffect = ({
         }
       );
     }
-  }, [isInView]);
+  }, [isInView, animate]);
 
   const renderWords = () => {
     return (

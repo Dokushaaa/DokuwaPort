@@ -28,11 +28,7 @@ const eldenRingRef = [
   },
 ];
 
-const LightMode = ({
-  classNameImp,
-}: {
-  classNameImp?: string;
-}) => {
+const LightMode = () => {
   function handleChangeColorTheme() {
     const html = document.querySelector('html');
     const currentTheme =

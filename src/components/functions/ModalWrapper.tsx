@@ -3,11 +3,9 @@ import React from 'react';
 const ModalWrapper = ({
   children,
   position,
-  opacity = '50',
 }: {
   children: React.ReactNode;
-  position?: any;
-  opacity?: string;
+  position?: string;
 }) => {
   return (
     <div
