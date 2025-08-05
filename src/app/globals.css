@@ -1,42 +1,407 @@
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@import 'tailwindcss';
+@layer base, utilities, components, theme;
+@custom-variant dark (&:where(.dark, .dark *));
+@custom-variant testing (&:where(.testing, .testing *));
+
+/* config file working*/
+@config "../../tailwind.config.ts";
+/* todo for testing if not available will switch to tw.config.ts */
+/* @plugin require('daisyui'); */
+.light {
+  /* four main colors */
+  --color-primary: #ebebeb;
+  --color-secondary: #282736;
+  --color-accent: #706b78;
+  --color-content: #101010;
+  --color-header: #273043;
+}
+.dark {
+  /* four main colors */
+  --color-primary: #101010;
+  --color-secondary: #282736;
+  --color-accent: #706b78;
+  --color-content: #ebebeb;
+  --color-header: #273043;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@theme {
+  /* font */
+  /* name font values as in google fonts api
+	 */
+  --font-fira: 'Fira Code', sans-serif;
+  --font-heading: 'Inter', serif;
+  /* --font-heading: "Playfair Display", serif; */
+  --font-inter: 'Inter', sans-serif;
+  /* colorings */
+  --color-primary: 'primary';
+  --color-secondary: 'secondary';
+  --color-accent: 'accent';
+  --color-content: 'content';
+  --color-header: 'header';
+  /* prefab colors */
+  --color-info: #4378d0;
+  --color-search: #191919;
+  --color-alert: #dc2626;
+  --color-disable: #7f7f7f;
+  --color-hazard: #f15a22;
+  --color-warning: #b1822f;
+  /* absolute colors */
+  --color-indiv: #eeeeee;
+
+  /* responsive design */
+  --portrait: '';
+  --landscape: '';
+  /* animation */
+  --animate-wiggle: wiggle 2.5s ease-in-out infinite;
+  @keyframes wiggle {
+    0%,
+    100% {
+      transform: rotate(-5deg);
+    }
+    50% {
+      transform: rotate(5deg);
+    }
+  }
+  --animate-spinner: spin 4.5s ease-in-out infinite;
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  --animate-spinSlow: spin 6s ease-in-out infinite;
+  @keyframes spin {
+    to {
+      transform: rotate(180deg);
+    }
+  }
+
+  /* background images */
+  --backgroundImage-hero: 'url[(/dev/HeroBG.svg)]';
+  /* shadcn disregard */
+  --radius: 0.625rem;
+}
+@theme inline {
+  --animate-spotlight: spotlight 2s ease 0.75s 1 forwards;
+}
+
+@keyframes spotlight {
+  0% {
+    opacity: 0;
+    transform: translate(-72%, -62%) scale(0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -40%) scale(1);
+  }
+}
+@layer base {
+  /* myDebug */
+  .debug {
+    @apply !rounded-md !bg-green-500 !p-1 !underline;
+  }
+  /* is default animation val */
+  .animator {
+    @apply transition-all duration-500 ease-in-out;
+  }
+
+  body,
+  html {
+    @apply bg-primary font-inter overflow-x-hidden transition-all duration-500 ease-in-out;
+  }
+
+  .container {
+    /* current */
+    @apply /* customized @apply */ /* original @apply */ /* if not portfolio: /* current @apply viewports xs: 480px, sm: 960px, md: 1280px, lg: 1920px, xl: 3840px */ mx-auto w-full max-w-[1000px] max-w-[1440px] p-2 px-5 px-7 transition-all duration-500 md:p-4 md:px-[1rem] md:px-[7.5rem];
+  }
+
+  a {
+    @apply no-underline;
+  }
+
+  ul {
+    @apply text-content list-none;
+  }
+
+  img {
+    @apply block bg-cover;
+  }
+  /* main text color */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  i,
+  a,
+  small,
+  strong,
+  em,
+  blockquote,
+  span {
+    @apply text-content;
+  }
+  .rgba,
+  button {
+    @apply text-indiv;
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p,
+    i,
+    a,
+    small,
+    strong,
+    em,
+    blockquote,
+    span {
+      @apply text-inherit;
+    }
+    ul {
+      @apply text-inherit;
+      li {
+        @apply text-inherit;
+      }
+    }
+  }
+
+  /* Headers */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-heading;
+  }
+  h1 {
+    @apply mb-4 text-3xl sm:text-4xl lg:text-5xl;
+  }
+
+  h2 {
+    @apply mb-4 text-2xl sm:text-3xl lg:text-4xl;
+  }
+
+  h3 {
+    @apply mb-4 text-xl sm:text-2xl lg:text-3xl;
+  }
+  h4 {
+    @apply mb-4 text-lg sm:text-xl lg:text-2xl;
+  }
+
+  h5 {
+    @apply mb-2 text-base sm:text-lg lg:text-xl;
+  }
+  h6 {
+    @apply mb-1 text-sm sm:text-base lg:text-base;
+  }
+  /* non-heading text types. although li... */
+  p,
+  a,
+  button,
+  li {
+    @apply mb-0 text-base md:text-lg;
+  }
+
+  /* set nat div */
+
+  div {
+    &.div-setter {
+      @apply w-full;
+    }
+
+    &.div-auto {
+      @apply flex w-full flex-col items-center gap-2;
+    }
+    &.div-col {
+      @apply flex w-full flex-col items-center justify-between gap-2;
+    }
+    &.div-row {
+      @apply flex w-full flex-col items-center justify-evenly gap-2 md:flex-row;
+    }
+    &.div-grid {
+      @apply flex w-full flex-col items-center gap-2 md:grid md:grid-cols-3;
+    }
+  }
+  /* nested  */
+  div.div-default,
+  div.div-def,
+  div.default,
+  div.def,
+  div.div-secondary,
+  div.div-sec,
+  div.secondary,
+  div.sec {
+    @apply w-full;
+    p {
+      @apply text-content dark:text-content;
+    }
+  }
+  div.div-textrender {
+    p {
+      @apply text-primary dark:text-content;
+    }
+  }
+  /* div setters: */
+  div.div-default,
+  div.div-def,
+  div.default,
+  div.def {
+    @apply bg-content/40 w-full rounded-md px-3 py-1 lg:px-5;
+  }
+  div.div-secondary,
+  div.div-sec,
+  div.secondary,
+  div.sec {
+    @apply bg-secondary w-full px-4 py-2;
+  }
+
+  /* Tables */
+  table {
+    @apply font-fira border-info dark:border-accent /* font-playfairR */ w-full border-2 text-base;
+  }
+
+  table thead tr th {
+    @apply border-content/10 font-fira /* font-playfairB */ border-x border-t p-3 text-center;
+  }
+
+  table tbody tr td {
+    @apply border-content/10 border-x border-b p-3 text-center;
+  }
+
+  table tbody tr:nth-child(odd) {
+    @apply bg-info/50 dark:bg-accent/50;
+  }
+
+  table tbody tr {
+    @apply w-auto;
+  }
+
+  .td-post {
+    @apply text-center text-balance;
+  }
+
+  .tools {
+    @apply border-content/30 text-content/70 rounded-xl border p-2;
   }
 }
 
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
+@layer components {
+  .sidebar {
+    @apply flex gap-2;
+  }
+  .afterHeader {
+    @apply mb-5 flex justify-end border-b-2 border-white px-5 md:hidden;
+  }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  .techItems {
+    @apply dark:bg-primary/50 bg-primary/30 text-indiv w-full rounded-md text-center shadow-lg;
+  }
+  .gridItem {
+    @apply relative min-h-[166px] rounded-lg border-2 border-transparent;
+  }
 }
+@layer utilities {
+  .typeEffB {
+    @apply mb-0 text-2xl text-black md:text-3xl lg:text-4xl dark:text-white;
+  }
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
+  .typeEffW {
+    @apply mb-0 text-2xl text-white md:text-3xl lg:text-4xl;
+  }
+  .header-nav-desktop {
+    @apply text-indiv rounded-lg px-5 text-center capitalize;
+  }
+  .div-set {
+    @apply md:border-content relative flex h-auto w-full flex-col items-center py-2 pb-5 md:rounded-md md:border-2 md:px-5;
+  }
+  /* fix this later and more classes */
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
+  .btn {
+    @apply flex cursor-pointer items-center justify-center gap-2 rounded-md text-center transition-all duration-500 ease-in-out;
+  }
+  .btn-normal {
+    @apply px-2 py-1;
+  }
+  .btn-contact {
+    @apply px-4 py-3;
+  }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+  #progressTop {
+    @apply fixed right-[10px] bottom-[15px] z-[100] grid h-[40px] w-[40px] cursor-pointer place-items-center rounded-full opacity-0 shadow-md md:right-[25px] lg:bottom-[25px] lg:h-[70px] lg:w-[70px] xl:right-[35px] xl:bottom-[35px];
+  }
+
+  #progressTop-value {
+    @apply bg-primary grid h-[calc(100%-15px)] w-[calc(100%-15px)] place-items-center rounded-full text-[35px];
+  }
+
+  .circle.icon {
+    @apply border-accent bg-secondary text-indiv rounded-full border-2 p-1 text-2xl;
+  }
+
+  .card-wrapper {
+    @apply h-[400px] w-full;
+    .card-inner {
+      @apply preserve-3d relative h-full w-full;
+      /* frontman: inactive */
+      .card-face {
+        @apply absolute flex h-full w-full flex-col items-center justify-center gap-2 rounded-md;
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+        &.front {
+          @apply outline-accent/50 outline-2;
+        }
+      }
+
+      /* backside: active */
+      .card-back {
+        @apply border-accent rotate-y-180 border-2;
+      }
+    }
+  }
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px rgb(16, 16, 16);
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(54, 54, 54, 0.864);
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgb(5, 103, 201);
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none; /* IE/Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  /* Smaller scrollbars for mobile/tablet (<1024px) */
+  @media (max-width: 1023px) {
+    ::-webkit-scrollbar {
+      width: 4px;
+      height: 4px;
+    }
   }
 }

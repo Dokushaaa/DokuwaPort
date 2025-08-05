@@ -1,6 +1,14 @@
+# This is my personal portfolio
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
+
+### Quick installation guide
+
+```bash
+https://tailwindcss.com/docs/installation/framework-guides/nextjs
+```
 
 First, run the development server:
 
@@ -12,6 +20,10 @@ yarn dev
 pnpm dev
 # or
 bun dev
+```
+
+```bash
+pnpm install react-icons framer-motion motion clsx tailwind-merge
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
