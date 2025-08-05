@@ -4,11 +4,9 @@ import {
   Geist,
   Geist_Mono,
   Inter,
-  Playfair_Display,
 } from 'next/font/google';
-import './globals.css';
 import { StoreProvider } from '../global/store/StoreContext';
-import StoreProviderWrapper from '@/global/store/StoreProviderWrapper';
+import './globals.css';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
