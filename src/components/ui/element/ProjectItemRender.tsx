@@ -21,10 +21,10 @@ export const ProjectItemRender = () => {
     <div className='grid gap-4 sm:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3'>
       {cardListArray.map(item => (
         <div key={item.id} className='cardItem'>
-          <div className='rgba bg-secondary mb-2 flex min-h-[325px] flex-col justify-evenly rounded-md px-3 py-2 md:min-h-[400px]'>
+          <div className='rgba bg-secondary mb-2 flex min-h-[325px] flex-col justify-around rounded-md px-3 py-2 md:min-h-[400px] md:justify-between'>
             <Image
-              width={300}
-              height={300}
+              width={500}
+              height={500}
               className='rounded-md'
               src={item.cardImage}
               alt={item.cardTitle}
