@@ -53,7 +53,7 @@ export const ProjectItemRender = () => {
                 {/* Button Section */}
                 <button
                   onClick={() => setSelectedCard(item)}
-                  className='cardInfo-ViewButton linkButton rgba flex flex-shrink-0 cursor-pointer items-center justify-end gap-2'>
+                  className='cardInfo-ViewButton linkButton rgba animator hover:border-accent flex flex-shrink-0 cursor-pointer items-center justify-end gap-2 rounded-md border-2 border-transparent p-2 hover:scale-105'>
                   <span className='text-sm whitespace-nowrap md:text-base'>
                     View Project
                   </span>

@@ -8,7 +8,7 @@ const footerRender = hyperLinks.map(item => (
   <li key={item.id} id={`item-${item.id}`}>
     <Link href={item.link}>
       <motion.p
-        className='animator cursor-pointer text-right text-white hover:text-white/40'
+        className='animator cursor-pointer text-right text-white hover:scale-105 hover:text-white/40'
         whileHover={{ scale: 1 }}
         whileTap={{ scale: 0.95 }}
         onClick={e => {

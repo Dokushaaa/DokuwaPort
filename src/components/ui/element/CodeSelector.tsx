@@ -108,7 +108,7 @@ const CodeSelector = () => {
                   onClick={() =>
                     handleFileSelect(file as FileTab)
                   }
-                  className={`w-full cursor-pointer rounded-md px-4 py-2 text-sm font-medium transition-all md:w-full ${
+                  className={`hover:bg-secondary hover:text-indiv hover:border-indiv animator w-full cursor-pointer rounded-md border-2 border-transparent px-4 py-2 text-sm font-medium transition-all hover:scale-105 md:w-full ${
                     fileName === file
                       ? 'bg-accent text-white'
                       : 'bg-gray-100 text-gray-800 hover:bg-gray-200'

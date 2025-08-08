@@ -74,7 +74,7 @@ const AboutContent = () => {
               </h3>
               <button
                 onClick={handleCopyAddress}
-                className='btn btn-normal flex items-center gap-2 rounded-md border-2 border-stone-400 bg-gray-200 bg-gray-500 shadow-lg hover:bg-gray-600'>
+                className='btn btn-normal animator bg-accent hover:bg-secondary rounded-md border-2 border-stone-400 shadow-lg hover:scale-105'>
                 <FaCopy className='text-xs' />
                 <p className='text-xs lg:pl-2 lg:text-left'>
                   Copy my Email Address

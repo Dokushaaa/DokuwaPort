@@ -42,7 +42,7 @@ const AboutInfo = () => {
                 className={`animator flex-1 cursor-pointer rounded-full px-5 py-2 text-center capitalize ${
                   selected === option
                     ? 'bg-secondary font-semibold'
-                    : 'bg-gray-200 text-black hover:bg-gray-300 dark:hover:bg-gray-600'
+                    : 'hover:bg-accent hover:text-indiv dark:hover:bg-accent bg-gray-300 text-black'
                 }`}>
                 {option}
               </button>

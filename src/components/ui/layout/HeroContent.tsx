@@ -33,14 +33,14 @@ const HeroContent = () => {
         </span>
         <ResumeShow />
 
-        <div className='div-default bg-content/40 flex w-full flex-col items-center justify-between gap-2 rounded-md p-5 text-left'>
-          <p className=''>
+        <div className='rgba div-default bg-secondary/95 dark:bg-secondary/50 text-indiv flex w-full flex-col items-center justify-between gap-2 rounded-md p-5 text-left'>
+          <p className='text-inherit'>
             I'm a front-end web developer with a passion for
             clean code and continuous learning. Coding has
             always been more than a skill—it's something I
             genuinely enjoy and constantly work to improve.
           </p>
-          <p>
+          <p className='text-inherit'>
             I specialize in building responsive, interactive
             interfaces using the React.js library and often
             work with the Next.js framework for more
@@ -48,7 +48,7 @@ const HeroContent = () => {
             Tailwind CSS, and I bring them to life with
             TypeScript for added structure and reliability.
           </p>
-          <p className='hidden md:flex'>
+          <p className='hidden text-inherit md:flex'>
             Outside of web development, I explore
             programming through game modding, particularly
             in titles from FromSoftware, where I create or

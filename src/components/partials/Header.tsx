@@ -47,7 +47,7 @@ const Header = () => {
       id={`item-${item.id}`}>
       <Link href={item.link}>
         <motion.p
-          className='header-nav-desktop cursor-pointer'
+          className='header-nav-desktop animator hover:text-accent cursor-pointer hover:scale-105'
           whileHover={{ scale: 1 }}
           whileTap={{ scale: 0.95 }}
           onClick={e => {

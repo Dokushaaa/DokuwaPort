@@ -585,7 +585,7 @@ export const socialLinksRender = socialLinks.map(item => (
     key={item.id}
     className='group flex w-fit cursor-pointer items-center justify-center gap-2 py-2 text-center active:scale-105'>
     <a
-      className='animator dark:group-hover:text-secondary group-hover:text-secondary/50 text-xl xl:w-1/4'
+      className='animator group-hover:text-accent text-xl group-hover:scale-105 xl:w-1/4'
       target='_blank'
       href={item.link}>
       {item.icon}

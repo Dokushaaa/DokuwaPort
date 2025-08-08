@@ -50,19 +50,23 @@ const ResumeShow: React.FC = () => {
     dispatch(setInfo(true));
   };
   const buttonClassName =
-    'btn btn-normal animator flex items-center gap-2 rounded-md border-2 border-stone-400 bg-gray-200 bg-gray-500 shadow-lg hover:bg-gray-600 w-full xl:w-1/3';
+    'btn btn-normal animator flex items-center gap-2 rounded-md border-2 border-stone-400 bg-accent shadow-lg hover:bg-secondary w-full xl:w-1/3 hover:scale-105';
   return (
     <>
       <div className='flex w-full flex-col items-center justify-center gap-2 md:flex-row'>
         <button
           onClick={() => handleShowModal(0)}
           className={buttonClassName}>
-          Modern Resume
+          <p className='text-sm lg:pl-2 lg:text-left'>
+            Modern Resume
+          </p>
         </button>
         <button
           onClick={() => handleShowModal(1)}
           className={buttonClassName}>
-          Formal Resume
+          <p className='text-sm lg:pl-2 lg:text-left'>
+            Formal Resume
+          </p>
         </button>
       </div>
 
